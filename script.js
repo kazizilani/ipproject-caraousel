@@ -1,3 +1,4 @@
+// array of member information
 const teamMembers = [
 	{ name: "Emily Kim", role: "Founder" },
 	{ name: "Michael Steward", role: "Creative Director" },
@@ -7,24 +8,33 @@ const teamMembers = [
 	{ name: "James Wilson", role: "Product Manager" }
 ];
 
+//accessing the relevant dom elements
+
 const cards = document.querySelectorAll(".card");
 const dots = document.querySelectorAll(".dot");
 const memberName = document.querySelector(".member-name");
 const memberRole = document.querySelector(".member-role");
 const leftArrow = document.querySelector(".nav-arrow.left");
 const rightArrow = document.querySelector(".nav-arrow.right");
+
+//setting the current current dom index
 let currentIndex = 0;
 let isAnimating = false;
 
+//callback handler for the click event listener set in buttons
 function updateCarousel(newIndex) {
+    //preventing double clicks during animations
 	if (isAnimating) return;
 	isAnimating = true;
 
+    //setting a revolving index
 	currentIndex = (newIndex + cards.length) % cards.length;
 
+    //setting the cards position in carousel
 	cards.forEach((card, i) => {
 		const offset = (i - currentIndex + cards.length) % cards.length;
 
+        //resetting the previous order
 		card.classList.remove(
 			"center",
 			"left-1",
@@ -34,6 +44,7 @@ function updateCarousel(newIndex) {
 			"hidden"
 		);
 
+        //setting the positin based on current index
 		if (offset === 0) {
 			card.classList.add("center");
 		} else if (offset === 1) {
@@ -49,10 +60,13 @@ function updateCarousel(newIndex) {
 		}
 	});
 
+    //switching the active class based on the current index
 	dots.forEach((dot, i) => {
 		dot.classList.toggle("active", i === currentIndex);
 	});
 
+
+    //creating an opacity animation
 	memberName.style.opacity = "0";
 	memberRole.style.opacity = "0";
 
@@ -63,11 +77,13 @@ function updateCarousel(newIndex) {
 		memberRole.style.opacity = "1";
 	}, 300);
 
+    //enabling the buttons again
 	setTimeout(() => {
 		isAnimating = false;
 	}, 800);
 }
 
+//adding event listeners on buttons, dots, and cards
 leftArrow.addEventListener("click", () => {
 	updateCarousel(currentIndex - 1);
 });
@@ -88,6 +104,7 @@ cards.forEach((card, i) => {
 	});
 });
 
+//enabling keyboard handing for accessability
 document.addEventListener("keydown", (e) => {
 	if (e.key === "ArrowLeft") {
 		updateCarousel(currentIndex - 1);
@@ -96,6 +113,7 @@ document.addEventListener("keydown", (e) => {
 	}
 });
 
+//support for touch events
 let touchStartX = 0;
 let touchEndX = 0;
 
