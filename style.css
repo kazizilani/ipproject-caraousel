@@ -1,3 +1,5 @@
+
+/** resetting defaults**/
 * {
 	margin: 0;
 	padding: 0;
@@ -5,6 +7,7 @@
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/**preparing the container for carousel**/
 body {
 	min-height: 100vh;
 	display: flex;
@@ -12,9 +15,10 @@ body {
 	align-items: center;
 	justify-content: center;
 	background-color: #f5f5f5;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
+/**styling the title**/
 .about-title {
 	font-size: 7.5rem;
 	font-weight: 900;
@@ -37,6 +41,7 @@ body {
 	color: transparent;
 }
 
+/**styling the carousel**/
 .carousel-container {
 	width: 100%;
 	max-width: 1200px;
@@ -46,6 +51,7 @@ body {
 	margin-top: 80px;
 }
 
+/**the carousel box**/
 .carousel-track {
 	width: 100%;
 	height: 100%;
@@ -57,6 +63,7 @@ body {
 	transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/**card style**/
 .card {
 	position: absolute;
 	width: 280px;
@@ -76,15 +83,18 @@ body {
 	transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/**curent index style**/
 .card.center {
 	z-index: 10;
 	transform: scale(1.1) translateZ(0);
 }
 
+/**removing any filter (if available)**/
 .card.center img {
 	filter: none;
 }
 
+/**styling for other cards**/
 .card.left-2 {
 	z-index: 1;
 	transform: translateX(-400px) scale(0.8) translateZ(-300px);
@@ -102,7 +112,7 @@ body {
 }
 
 .card.left-1 img {
-	filter: grayscale(100%);
+	filter: grayscale(50%);
 }
 
 .card.right-1 {
@@ -112,7 +122,7 @@ body {
 }
 
 .card.right-1 img {
-	filter: grayscale(100%);
+	filter: grayscale(50%);
 }
 
 .card.right-2 {
@@ -125,11 +135,12 @@ body {
 	filter: grayscale(100%);
 }
 
+/**other cards**/
 .card.hidden {
 	opacity: 0;
 	pointer-events: none;
 }
-
+/**styling related info**/
 .member-info {
 	text-align: center;
 	margin-top: 40px;
@@ -145,6 +156,7 @@ body {
 	display: inline-block;
 }
 
+/**setting the dashes with name**/
 .member-name::before,
 .member-name::after {
 	content: "";
@@ -163,6 +175,7 @@ body {
 	right: -120px;
 }
 
+/**styling role**/
 .member-role {
 	color: #848696;
 	font-size: 1.5rem;
@@ -174,6 +187,8 @@ body {
 	margin-top: -15px;
 	position: relative;
 }
+
+/**styling dots**/
 .dots {
 	display: flex;
 	justify-content: center;
@@ -190,11 +205,13 @@ body {
 	transition: all 0.3s ease;
 }
 
+/**styling the dots for current index**/
 .dot.active {
 	background: rgb(8, 42, 123);
 	transform: scale(1.2);
 }
 
+/**styling the button**/
 .nav-arrow {
 	position: absolute;
 	top: 50%;
@@ -231,6 +248,7 @@ body {
 	padding-left: 3px;
 }
 
+/**making it responsive**/
 @media (max-width: 768px) {
 	.about-title {
 		font-size: 4.5rem;
